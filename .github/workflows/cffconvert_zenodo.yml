@@ -33,10 +33,10 @@ jobs:
         with:
           cmd: jq '.license = .license.id' .zenodo.json > .zenodo.json.tmp && mv .zenodo.json.tmp .zenodo.json
 
-      - name: Enrich Zenodo metadata
-        uses: sergeysova/jq-action@v2
-        with:
-          cmd: jq -s '.[0] * .[1]' .zenodo.json .github/templates/zenodo_metadata_enrichment.json > .zenodo.json.tmp && mv .zenodo.json.tmp .zenodo.json
+      # - name: Enrich Zenodo metadata
+        # uses: sergeysova/jq-action@v2
+        # with:
+          # cmd: jq -s '.[0] * .[1]' .zenodo.json .github/templates/zenodo_metadata_enrichment.json > .zenodo.json.tmp && mv .zenodo.json.tmp .zenodo.json
 
       - name: Check for changes
         run: |
