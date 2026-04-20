@@ -53,7 +53,7 @@ jobs:
           git push
           echo "pushed=true" >> "$GITHUB_OUTPUT"
   
-  reconcile_mkdocs:
-    needs: validate
-    if: ${{ (needs.validate.outputs.pushed == 'true') && (github.event_name == 'push') }}
-    uses: ./.github/workflows/release-update-mkdocs-citation.yml
+  # reconcile_mkdocs:
+    # needs: validate
+    # if: ${{ (needs.validate.outputs.pushed == 'true') && (github.event_name == 'push') }}
+    # uses: ./.github/workflows/release-update-mkdocs-citation.yml
