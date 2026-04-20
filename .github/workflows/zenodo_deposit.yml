@@ -36,7 +36,7 @@ jobs:
       - name: Get collection id
         id: collectionid
         run: |
-          COLLECTION_ID=$(DOI=${{ env.CURRENT_DOI }} ZENODO_SANDBOX=false python ./.github/scripts/get_zenodo_collection.py)
+          COLLECTION_ID=$(DOI=${{ env.CURRENT_DOI }} ZENODO_SANDBOX=true python ./.github/scripts/get_zenodo_collection.py)
           echo "The collection id is ${COLLECTION_ID}"
           echo "COLLECTION_ID=$COLLECTION_ID" >> $GITHUB_ENV
 
