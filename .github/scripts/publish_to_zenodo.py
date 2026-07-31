@@ -8,6 +8,9 @@ import yaml
 ACCESS_TOKEN = os.environ["ZENODO_SANDBOX_TOKEN"]
 CONCEPT_ID = os.environ["ZENODO_SANDBOX_CONCEPT_ID"]
 
+print(CONCEPT_ID)
+print(ACCESS_TOKEN)
+
 BASE_URL = "https://sandbox.zenodo.org/api"
 
 
