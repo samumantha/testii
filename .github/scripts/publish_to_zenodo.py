@@ -63,6 +63,24 @@ metadata = {
 }
 
 
+# Discard any unpublished draft left over from a previous failed run.
+# Zenodo only allows one unpublished new-version draft per concept at
+# a time, so a stray one would make the newversion call below fail.
+
+r = requests.get(
+    f"{BASE_URL}/deposit/depositions",
+    params={"q": f"conceptrecid:{CONCEPT_ID}", "all_versions": "true"},
+    headers=json_headers,
+)
+
+r.raise_for_status()
+
+for dep in r.json():
+    if not dep.get("submitted"):
+        print(f"Discarding leftover draft {dep['id']}")
+        requests.delete(dep["links"]["self"], headers=json_headers).raise_for_status()
+
+
 # Find the current latest version of this concept.
 # newversion only works when called on the latest version's own
 # deposit ID, and that ID changes with every new release.
