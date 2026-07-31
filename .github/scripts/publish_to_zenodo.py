@@ -63,10 +63,28 @@ metadata = {
 }
 
 
+# Find the current latest version of this concept.
+# newversion only works when called on the latest version's own
+# deposit ID, and that ID changes with every new release.
+
+r = requests.get(
+    f"{BASE_URL}/records",
+    params={"q": f"conceptrecid:{CONCEPT_ID}", "all_versions": "true"},
+    headers=json_headers,
+)
+
+r.raise_for_status()
+
+hits = r.json()["hits"]["hits"]
+latest_id = max(hits, key=lambda hit: hit["id"])["id"]
+
+print(f"Latest existing version: {latest_id}")
+
+
 # Create new version of existing concept DOI
 
 r = requests.post(
-    f"{BASE_URL}/deposit/depositions/{CONCEPT_ID}/actions/newversion",
+    f"{BASE_URL}/deposit/depositions/{latest_id}/actions/newversion",
     headers=json_headers)
 
 r.raise_for_status()
