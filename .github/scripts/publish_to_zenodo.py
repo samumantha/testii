@@ -58,7 +58,7 @@ metadata = {
     "description": cff.get("abstract", ""),
     "creators": cff_to_creators(cff["authors"]),
     "keywords": cff.get("keywords", []),
-    "version": cff.get("version"),
+    "version": str(cff.get("version")) if cff.get("version") is not None else None,
     "license": cff.get("license")
 }
 
