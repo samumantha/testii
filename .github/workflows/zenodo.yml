@@ -12,8 +12,8 @@ jobs:
       contents: read
 
     env:
-      ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
-      ZENODO_CONCEPT_ID: ${{ vars.ZENODO_CONCEPT_ID }}
+      ZENODO_SANDBOX_TOKEN: ${{ secrets.ZENODO_SANDBOX_TOKEN }}
+      ZENODO_SANDBOX_CONCEPT_ID: ${{ vars.ZENODO_SANDBOX_CONCEPT_ID }}
 
     steps:
       - uses: actions/checkout@v4
