@@ -21,7 +21,7 @@ upload_headers = {
 }
 
 def load_citation():
-    with open("../../CITATION.cff", encoding="utf-8") as f:
+    with open("CITATION.cff", encoding="utf-8") as f:
         return yaml.safe_load(f)
 
 
